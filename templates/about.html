@@ -1,0 +1,74 @@
+{% extends 'base.html' %}
+{% block title %}About — Sora Seventh{% endblock %}
+
+{% block content %}
+
+<!-- Hero About -->
+<section class="bg-gradient-to-b from-gray-50 to-white py-20 border-b border-gray-100">
+    <div class="max-w-4xl mx-auto px-6 text-center">
+        <h1 class="text-4xl md:text-5xl font-bold mb-6 text-gray-900">Tentang Sora Seventh</h1>
+        <p class="text-gray-500 text-lg leading-relaxed">
+            Kami adalah *Software House* yang didorong oleh semangat untuk menciptakan produk digital yang tidak hanya berfungsi dengan baik, tetapi juga memberikan pengalaman yang luar biasa bagi penggunanya.
+        </p>
+    </div>
+</section>
+
+<!-- Visi Misi -->
+<section class="py-20">
+    <div class="max-w-6xl mx-auto px-6 grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+        <div>
+            <h2 class="text-3xl font-bold mb-6">Visi & Misi Kami</h2>
+            <div class="space-y-6">
+                <div>
+                    <h3 class="text-xl font-semibold mb-2 text-[#44661c]">Visi</h3>
+                    <p class="text-gray-600">Menjadi mitra teknologi terdepan yang membantu bisnis dari berbagai skala untuk tumbuh dan berkembang di era digital melalui solusi perangkat lunak yang inovatif dan terukur.</p>
+                </div>
+                <div>
+                    <h3 class="text-xl font-semibold mb-2 text-[#44661c]">Misi</h3>
+                    <ul class="list-disc leading-relaxed text-gray-600 pl-5 space-y-2">
+                        <li>Memberikan produk perangkat lunak berkualitas tinggi dengan kode yang bersih dan terstruktur.</li>
+                        <li>Memadukan desain estetis (UI) dengan alur interaksi yang intuitif (UX).</li>
+                        <li>Menjaga komunikasi dan transparansi dengan klien di setiap proses *development*.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="rounded-3xl h-80 overflow-hidden shadow-lg border border-gray-100">
+            <img src="{{ url_for('static', filename='img/bg2.jpg') }}" alt="Sora Seventh Team" class="w-full h-full object-cover">
+        </div>
+    </div>
+</section>
+
+<!-- Tim Kami (Opsional/Contoh) -->
+<section class="bg-gray-50 py-20 border-t border-gray-100">
+    <div class="max-w-6xl mx-auto px-6 text-center">
+        <h2 class="text-3xl font-bold mb-4">Nilai Inti Kami</h2>
+        <p class="text-gray-500 mb-12 max-w-2xl mx-auto">Dalam setiap baris kode yang kami tulis dan setiap desain yang kami rancang, kami selalu memegang teguh nilai-nilai ini.</p>
+        
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8 text-left">
+            <div class="bg-white p-8 rounded-2xl shadow-sm border border-gray-200">
+                <div class="h-12 w-12 bg-blue-50 text-blue-600 rounded-xl flex items-center justify-center mb-6">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
+                </div>
+                <h3 class="text-xl font-bold mb-3">Kecepatan & Agility</h3>
+                <p class="text-gray-500 text-sm leading-relaxed">Memberikan solusi yang cepat tanpa mengorbankan kualitas dan selalu siap beradaptasi dengan perubahan kebutuhan.</p>
+            </div>
+            <div class="bg-white p-8 rounded-2xl shadow-sm border border-gray-200">
+                <div class="h-12 w-12 bg-green-50 text-green-600 rounded-xl flex items-center justify-center mb-6">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path></svg>
+                </div>
+                <h3 class="text-xl font-bold mb-3">Keamanan Terjamin</h3>
+                <p class="text-gray-500 text-sm leading-relaxed">Privasi dan standar keamanan data selalu menjadi prioritas utama pada produk yang kami rilis ke publik.</p>
+            </div>
+            <div class="bg-white p-8 rounded-2xl shadow-sm border border-gray-200">
+                <div class="h-12 w-12 bg-purple-50 text-purple-600 rounded-xl flex items-center justify-center mb-6">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 10h4.764a2 2 0 011.789 2.894l-3.5 7A2 2 0 0115.263 21h-4.017c-.163 0-.326-.02-.485-.06L7 20m7-10V5a2 2 0 00-2-2h-.095c-.5 0-.905.405-.905.905 0 .714-.211 1.412-.608 2.006L7 11v9m7-10h-2M7 20H5a2 2 0 01-2-2v-6a2 2 0 012-2h2.514"></path></svg>
+                </div>
+                <h3 class="text-xl font-bold mb-3">Kepuasan Pengguna</h3>
+                <p class="text-gray-500 text-sm leading-relaxed">Produk yang baik adalah yang mudah dan nyaman digunakan oleh *end-user*. Kami menjamin itu.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+{% endblock %}

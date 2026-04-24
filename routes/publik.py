@@ -6,7 +6,13 @@ publik = Blueprint('publik', __name__)
 
 @publik.route('/')
 def index():
-    return render_template('index.html')
+    # Ambil 3 artikel terbaru untuk halaman home
+    terbaru = Artikel.query.order_by(Artikel.tanggal.desc()).limit(3).all()
+    return render_template('index.html', artikels=terbaru)
+
+@publik.route('/about')
+def about():
+    return render_template('about.html')
 
 @publik.route('/artikel')
 def artikel():

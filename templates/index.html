@@ -1,51 +1,113 @@
 {% extends 'base.html' %}
 {% block title %}Sora Seventh — Software House{% endblock %}
 
+{% block main_class %}{% endblock %}
+
 {% block content %}
 
 <!-- Hero -->
-<section class="max-w-6xl mx-auto px-6 py-32 text-center">
-    <h1 class="text-5xl font-bold mb-6">We Build Digital Products</h1>
-    <p class="text-gray-500 text-lg mb-10 max-w-xl mx-auto">
-        Sora Seventh adalah software house yang fokus membangun solusi digital berkualitas tinggi.
-    </p>
-    <a href="/artikel" class="bg-black text-white px-8 py-3 rounded-full text-sm hover:bg-gray-800">
-        Baca Blog Kami
-    </a>
+<section class="relative w-full bg-cover bg-center bg-no-repeat min-h-[80vh] md:min-h-screen flex flex-col justify-center items-center text-center" style="background-image: url('{{ url_for('static', filename='img/bg.jpg') }}');">
+    <div class="absolute inset-0 bg-black/10"></div>
+    <div class="relative z-10 max-w-full mx-auto px-12 pt-20">
+        <h1 class="text-5xl md:text-6xl font-bold mb-6 text-white">We Build Digital Products</h1>
+        <p class="text-gray-200 text-lg md:text-xl mb-10 max-w-xl mx-auto">
+            Sora Seventh adalah software house yang fokus membangun solusi digital berkualitas tinggi.
+        </p>
+        <a href="/artikel" class="bg-white text-black px-8 py-3 rounded-full text-sm font-bold hover:bg-gray-200 transition-colors">
+            Baca Blog Kami
+        </a>
+    </div>
 </section>
 
 <!-- Layanan -->
-<section class="bg-gray-50 py-20">
-    <div class="max-w-6xl mx-auto px-6">
-        <h2 class="text-3xl font-bold mb-12 text-center">Layanan Kami</h2>
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <div class="bg-white p-8 rounded-2xl border border-gray-100">
-                <h3 class="font-bold text-lg mb-3">Web Development</h3>
-                <p class="text-gray-500 text-sm">Membangun website modern, cepat, dan responsif sesuai kebutuhan bisnis kamu.</p>
+<section class="py-28 bg-[#ffffff] relative overflow-hidden text-gray-800">
+
+    <div class="relative z-10 max-w-6xl mx-auto px-6">
+        <div class="text-center mb-20">
+            
+            <h2 class="text-2xl md:text-3xl font-bold">Layanan Terbaik Kami</h2>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">
+            <!-- Card 1 -->
+            <div class="group p-8 md:p-10 rounded-[2rem] bg-white/5 border border-white/10 hover:bg-white/10 backdrop-blur-md hover:-translate-y-2 transition-all duration-500">
+                <div class="w-16 h-16 mb-8 rounded-2xl bg-gradient-to-br from-[#dcecad] to-[#acd466] flex items-center justify-center text-[#11180b] group-hover:scale-110 group-hover:rotate-3 transition-transform duration-500 shadow-lg">
+                    {{ icon('web', 'w-8 h-8') }}
+                </div>
+                <h3 class="font-bold text-2xl mb-4 text-gray-700">Web Development</h3>
+                <p class="text-gray-400 text-sm leading-relaxed">Membangun website modern, cepat, dan responsif dengan performa optimal untuk skalabilitas bisnis di masa depan.</p>
             </div>
-            <div class="bg-white p-8 rounded-2xl border border-gray-100">
-                <h3 class="font-bold text-lg mb-3">Mobile App</h3>
-                <p class="text-gray-500 text-sm">Aplikasi mobile Android dan iOS yang intuitif dan mudah digunakan.</p>
+            <!-- Card 2 -->
+            <div class="group p-8 md:p-10 rounded-[2rem] bg-white/5 border border-white/10 hover:bg-white/10 backdrop-blur-md hover:-translate-y-2 transition-all duration-500">
+                <div class="w-16 h-16 mb-8 rounded-2xl bg-gradient-to-br from-[#dcecad] to-[#acd466] flex items-center justify-center text-[#11180b] group-hover:scale-110 group-hover:rotate-3 transition-transform duration-500 shadow-lg">
+                    {{ icon('mobile', 'w-8 h-8') }}
+                </div>
+                <h3 class="font-bold text-2xl mb-4 text-gray-700">Mobile App</h3>
+                <p class="text-gray-400 text-sm leading-relaxed">Aplikasi mobile native dan hybrid (Android & iOS) yang intuitif dengan standar user experience kelas atas.</p>
             </div>
-            <div class="bg-white p-8 rounded-2xl border border-gray-100">
-                <h3 class="font-bold text-lg mb-3">UI/UX Design</h3>
-                <p class="text-gray-500 text-sm">Desain antarmuka yang bersih, modern, dan berfokus pada pengalaman pengguna.</p>
+            <!-- Card 3 -->
+            <div class="group p-8 md:p-10 rounded-[2rem] bg-white/5 border border-white/10 hover:bg-white/10 backdrop-blur-md hover:-translate-y-2 transition-all duration-500">
+                <div class="w-16 h-16 mb-8 rounded-2xl bg-gradient-to-br from-[#dcecad] to-[#acd466] flex items-center justify-center text-[#11180b] group-hover:scale-110 group-hover:rotate-3 transition-transform duration-500 shadow-lg">
+                    {{ icon('design', 'w-8 h-8') }}
+                </div>
+                <h3 class="font-bold text-2xl mb-4 text-gray-700">UI/UX Design</h3>
+                <p class="text-gray-400 text-sm leading-relaxed">Rancangan antarmuka yang bersih, modern, memanjakan mata, sekaligus berfokus pada kemudahan akses pengguna.</p>
             </div>
         </div>
     </div>
 </section>
 
 <!-- Artikel terbaru -->
-<section class="max-w-6xl mx-auto px-6 py-20">
-    <h2 class="text-3xl font-bold mb-12">Artikel Terbaru</h2>
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-        {% for artikel in artikels %}
-        <a href="/artikel/{{ artikel.id }}" class="group border border-gray-100 rounded-2xl p-6 hover:border-gray-300 transition">
-            <p class="text-xs text-gray-400 mb-3">{{ artikel.tanggal.strftime('%d %B %Y') }}</p>
-            <h3 class="font-bold mb-2 group-hover:text-blue-600">{{ artikel.judul }}</h3>
-            <p class="text-gray-500 text-sm">{{ artikel.isi[:100] }}...</p>
+<section class="py-28 bg-[#f8faf5] relative">
+    <div class="max-w-6xl mx-auto px-6">
+        <div class="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-6">
+            <div>
+                <span class="inline-block py-1.5 px-4 rounded-full bg-[#e2edcb] text-[#44661c] font-bold tracking-wider uppercase text-xs mb-5 border border-[#c9e289]">Insights</span>
+                <h2 class="text-3xl md:text-5xl font-bold text-gray-900">Artikel Terbaru</h2>
+            </div>
+            <a href="/artikel" class="hidden md:inline-flex items-center gap-2 px-6 py-3 rounded-full bg-white border border-gray-200 text-sm font-bold text-[#1f2c14] hover:bg-gray-50 hover:border-gray-300 transition-all shadow-sm group">
+                Lihat Semua
+                {{ icon('arrow-right', 'w-4 h-4 group-hover:translate-x-1 transition-transform') }}
+            </a>
+        </div>
+        
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+            {% for artikel in artikels %}
+            <a href="/artikel/{{ artikel.id }}" class="group flex flex-col bg-white rounded-[2rem] p-3 border border-gray-100 shadow-sm hover:shadow-2xl hover:shadow-[#c9e289]/20 hover:-translate-y-2 transition-all duration-500">
+                <!-- Image Content -->
+                <div class="w-full h-52 rounded-[1.5rem] bg-gradient-to-br from-[#eaf4d2] to-[#c9e289] relative overflow-hidden mb-6 flex items-center justify-center">
+                    {% if artikel.gambar %}
+                        <img src="{{ artikel.gambar }}" alt="{{ artikel.judul }}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                    {% else %}
+                        <div class="absolute inset-0 bg-black/0 group-hover:bg-black/5 transition-colors duration-500"></div>
+                        {{ icon('blog', 'w-12 h-12 text-[#7f9660] opacity-50 group-hover:scale-110 transition-transform duration-500') }}
+                    {% endif %}
+                </div>
+                
+                <div class="px-5 pb-5 flex flex-col flex-grow">
+                    <div class="flex items-center gap-3 mb-4 text-xs font-bold text-[#7f9660] uppercase tracking-wider">
+                        <span>Blog</span>
+                        <span class="w-1 h-1 rounded-full bg-[#7f9660]"></span>
+                        <span>{{ artikel.tanggal.strftime('%d %b %Y') }}</span>
+                    </div>
+                    <h3 class="font-bold text-xl text-gray-900 mb-3 group-hover:text-[#44661c] transition-colors line-clamp-2 leading-snug">{{ artikel.judul }}</h3>
+                    <p class="text-gray-500 text-sm leading-relaxed mb-8 flex-grow line-clamp-3">{{ artikel.isi | striptags | truncate(120) }}</p>
+                    
+                    <!-- Read more indicator -->
+                    <div class="mt-auto pt-5 border-t border-gray-50 flex items-center justify-between w-full text-sm font-bold text-gray-400 group-hover:text-[#44661c] transition-colors">
+                        Baca selengkapnya
+                        <div class="w-8 h-8 rounded-full bg-gray-50 flex items-center justify-center group-hover:bg-[#eaf4d2] transition-colors">
+                            {{ icon('arrow-right', 'w-4 h-4') }}
+                        </div>
+                    </div>
+                </div>
+            </a>
+            {% endfor %}
+        </div>
+        
+        <a href="/artikel" class="md:hidden mt-10 flex justify-center items-center gap-2 w-full py-4 rounded-2xl bg-white border border-gray-200 text-sm font-bold text-[#1f2c14] shadow-sm">
+            Lihat Semua Artikel
+            {{ icon('arrow-right', 'w-4 h-4') }}
         </a>
-        {% endfor %}
     </div>
 </section>
 
