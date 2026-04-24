@@ -1,0 +1,17 @@
+{% macro icon(name, classes='') -%}
+{% if name == 'brand' -%}
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" class="{{ classes }}" aria-hidden="true">
+    <path d="M4 14c4.5 0 8.5-3 9.5-7.3 4.2.8 6.5 4.9 6.5 8.3 0 4.2-3 7.3-7.1 7.3-3.8 0-8.9-2.8-8.9-8.3Z" fill="currentColor"/>
+</svg>
+{% elif name == 'home' -%}
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" class="{{ classes }}" aria-hidden="true">
+    <path d="M3.75 10.5 12 4l8.25 6.5v8.25a1.25 1.25 0 0 1-1.25 1.25H5a1.25 1.25 0 0 1-1.25-1.25V10.5Z" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/>
+    <path d="M9 20v-5.25A.75.75 0 0 1 9.75 14h4.5a.75.75 0 0 1 .75.75V20" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/>
+</svg>
+{% elif name == 'blog' -%}
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" class="{{ classes }}" aria-hidden="true">
+    <rect x="4" y="4" width="16" height="16" rx="2.5" stroke="currentColor" stroke-width="1.7"/>
+    <path d="M8 9.5h8M8 12h8M8 14.5h5" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/>
+</svg>
+{% endif -%}
+{%- endmacro %}

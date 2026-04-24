@@ -4,23 +4,39 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{% block title %}Sora Seventh{% endblock %}</title>
-    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/output.css') }}">
 </head>
 <body class="bg-white text-gray-800">
+    {% from "components/icons.html" import icon %}
 
     <!-- Navbar -->
-    <nav class="fixed top-0 w-full bg-white border-b border-gray-100 z-50">
-        <div class="max-w-6xl mx-auto px-6 py-4 flex justify-between items-center">
-            <a href="/" class="text-xl font-bold">Sora Seventh</a>
-            <div class="flex gap-6 text-sm">
-                <a href="/" class="hover:text-blue-600">Home</a>
-                <a href="/artikel" class="hover:text-blue-600">Blog</a>
+    <nav class="fixed top-0 w-full bg-white/90 backdrop-blur-md border-b border-[#e8efda] z-50">
+        <div class="max-w-6xl mx-auto px-6 py-3.5 flex justify-between items-center">
+            <a href="/" class="flex items-center gap-3 pr-6">
+                <span class="h-11 w-11 rounded-2xl bg-gradient-to-br from-[#dcecad] via-[#c9e289] to-[#acd466] ring-1 ring-[#98bf4f]/40 flex items-center justify-center shadow-sm">
+                    {{ icon('brand', 'w-5 h-5 text-[#44661c]') }}
+                </span>
+                <span class="leading-tight">
+                    <span class="block text-[0.66rem] font-medium tracking-[0.22em] uppercase text-[#7f9660]">Sora</span>
+                    <span class="block text-lg font-semibold text-[#1f2c14]">Seventh</span>
+                </span>
+            </a>
+
+            <div class="flex items-center gap-2 text-sm border border-[#e2edcb] rounded-full px-2 py-1">
+                <a href="/" class="inline-flex items-center gap-2 px-4 py-2 rounded-full text-[#314b16] hover:bg-[#eaf4d2] hover:text-[#25370f] transition-colors duration-200">
+                    {{ icon('home', 'w-4 h-4') }}
+                    Home
+                </a>
+                <a href="/artikel" class="inline-flex items-center gap-2 px-4 py-2 rounded-full text-[#4f632f] hover:bg-[#e3efc6] hover:text-[#293d10] transition-colors duration-200">
+                    {{ icon('blog', 'w-4 h-4') }}
+                    Blog
+                </a>
             </div>
         </div>
     </nav>
 
     <!-- Konten utama -->
-    <main class="pt-16">
+    <main class="pt-20">
         {% block content %}{% endblock %}
     </main>
 
