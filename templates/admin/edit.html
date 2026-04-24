@@ -50,13 +50,7 @@
             {% for kategori in kategoris %}
             <option
               value="{{ kategori.id }}"
-              {%
-              if
-              artikel.kategori_id=""
-              ="kategori.id"
-              %}selected{%
-              endif
-              %}
+              {% if artikel.kategori_id == kategori.id %}selected{% endif %}
             >
               {{ kategori.nama }}
             </option>
