@@ -20,12 +20,12 @@ def create_app():
     )
 
     with app.app_context():
-        db.create_all()  # ← tambah ini
-
-    from models.artikel import User
+        from models.artikel import User, Artikel
+        db.create_all()
 
     @login_manager.user_loader
     def load_user(user_id):
+        from models.artikel import User
         return User.query.get(int(user_id))
 
     from routes.publik import publik
