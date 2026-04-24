@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <title>Dashboard Admin</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-50 min-h-screen">
+
+    <nav class="bg-white border-b border-gray-100 px-8 py-4 flex justify-between items-center">
+        <span class="font-bold">Sora Seventh — Admin</span>
+        <a href="/admin/logout" class="text-sm text-gray-400 hover:text-black">Logout</a>
+    </nav>
+
+    <div class="max-w-5xl mx-auto px-6 py-12">
+        <div class="flex justify-between items-center mb-8">
+            <h1 class="text-2xl font-bold">Kelola Artikel</h1>
+            <a href="/admin/tambah" class="bg-black text-white px-6 py-2 rounded-full text-sm hover:bg-gray-800">
+                + Tambah Artikel
+            </a>
+        </div>
+
+        <div class="bg-white rounded-2xl border border-gray-100 overflow-hidden">
+            <table class="w-full text-sm">
+                <thead class="border-b border-gray-100">
+                    <tr class="text-gray-400 text-left">
+                        <th class="px-6 py-4">Judul</th>
+                        <th class="px-6 py-4">Tanggal</th>
+                        <th class="px-6 py-4">Aksi</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for artikel in artikels %}
+                    <tr class="border-b border-gray-50 hover:bg-gray-50">
+                        <td class="px-6 py-4 font-medium">{{ artikel.judul }}</td>
+                        <td class="px-6 py-4 text-gray-400">{{ artikel.tanggal.strftime('%d %B %Y') }}</td>
+                        <td class="px-6 py-4 flex gap-4">
+                            <a href="/admin/edit/{{ artikel.id }}" class="text-blue-500 hover:underline">Edit</a>
+                            <a href="/admin/hapus/{{ artikel.id }}" class="text-red-400 hover:underline"
+                                onclick="return confirm('Yakin mau hapus artikel ini?')">Hapus</a>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+</body>
+</html>

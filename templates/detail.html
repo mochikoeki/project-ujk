@@ -1,0 +1,17 @@
+{% extends 'base.html' %} {% block title %}{{ artikel.judul }} — Sora Seventh{%
+endblock %} {% block content %}
+<section class="max-w-3xl mx-auto px-6 py-20">
+  <a
+    href="/artikel"
+    class="text-sm text-gray-400 hover:text-black mb-8 inline-block"
+    >&larr; Kembali</a
+  >
+  <p class="text-xs text-gray-400 mb-4">
+    {{ artikel.tanggal.strftime('%d %B %Y') }}
+  </p>
+  <h1 class="text-4xl font-bold mb-8">{{ artikel.judul }}</h1>
+  <div class="text-gray-600 leading-relaxed prose max-w-none">
+    {{ artikel.isi | safe }}
+  </div>
+</section>
+{% endblock %}

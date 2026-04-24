@@ -1,0 +1,52 @@
+{% extends 'base.html' %}
+{% block title %}Sora Seventh — Software House{% endblock %}
+
+{% block content %}
+
+<!-- Hero -->
+<section class="max-w-6xl mx-auto px-6 py-32 text-center">
+    <h1 class="text-5xl font-bold mb-6">We Build Digital Products</h1>
+    <p class="text-gray-500 text-lg mb-10 max-w-xl mx-auto">
+        Sora Seventh adalah software house yang fokus membangun solusi digital berkualitas tinggi.
+    </p>
+    <a href="/artikel" class="bg-black text-white px-8 py-3 rounded-full text-sm hover:bg-gray-800">
+        Baca Blog Kami
+    </a>
+</section>
+
+<!-- Layanan -->
+<section class="bg-gray-50 py-20">
+    <div class="max-w-6xl mx-auto px-6">
+        <h2 class="text-3xl font-bold mb-12 text-center">Layanan Kami</h2>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div class="bg-white p-8 rounded-2xl border border-gray-100">
+                <h3 class="font-bold text-lg mb-3">Web Development</h3>
+                <p class="text-gray-500 text-sm">Membangun website modern, cepat, dan responsif sesuai kebutuhan bisnis kamu.</p>
+            </div>
+            <div class="bg-white p-8 rounded-2xl border border-gray-100">
+                <h3 class="font-bold text-lg mb-3">Mobile App</h3>
+                <p class="text-gray-500 text-sm">Aplikasi mobile Android dan iOS yang intuitif dan mudah digunakan.</p>
+            </div>
+            <div class="bg-white p-8 rounded-2xl border border-gray-100">
+                <h3 class="font-bold text-lg mb-3">UI/UX Design</h3>
+                <p class="text-gray-500 text-sm">Desain antarmuka yang bersih, modern, dan berfokus pada pengalaman pengguna.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Artikel terbaru -->
+<section class="max-w-6xl mx-auto px-6 py-20">
+    <h2 class="text-3xl font-bold mb-12">Artikel Terbaru</h2>
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        {% for artikel in artikels %}
+        <a href="/artikel/{{ artikel.id }}" class="group border border-gray-100 rounded-2xl p-6 hover:border-gray-300 transition">
+            <p class="text-xs text-gray-400 mb-3">{{ artikel.tanggal.strftime('%d %B %Y') }}</p>
+            <h3 class="font-bold mb-2 group-hover:text-blue-600">{{ artikel.judul }}</h3>
+            <p class="text-gray-500 text-sm">{{ artikel.isi[:100] }}...</p>
+        </a>
+        {% endfor %}
+    </div>
+</section>
+
+{% endblock %}

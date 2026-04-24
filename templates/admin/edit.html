@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <title>Edit Artikel</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdn.quilljs.com/1.3.6/quill.snow.css" rel="stylesheet">
+</head>
+<body class="bg-gray-50 min-h-screen">
+
+    <nav class="bg-white border-b border-gray-100 px-8 py-4 flex justify-between items-center">
+        <span class="font-bold">Sora Seventh — Admin</span>
+        <a href="/admin/logout" class="text-sm text-gray-400 hover:text-black">Logout</a>
+    </nav>
+
+    <div class="max-w-3xl mx-auto px-6 py-12">
+        <a href="/admin/dashboard" class="text-sm text-gray-400 hover:text-black mb-8 inline-block">&larr; Kembali</a>
+        <h1 class="text-2xl font-bold mb-8">Edit Artikel</h1>
+
+        <form method="POST" id="form-artikel" class="flex flex-col gap-6">
+            <div>
+                <label class="text-sm text-gray-500 mb-2 block">Judul</label>
+                <input type="text" name="judul" value="{{ artikel.judul }}"
+                    class="w-full border border-gray-200 rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-gray-400">
+            </div>
+            <div>
+                <label class="text-sm text-gray-500 mb-2 block">Isi Artikel</label>
+                <div id="editor" style="height: 300px; background: white;"></div>
+                <input type="hidden" name="isi" id="isi-hidden">
+            </div>
+            <button type="submit"
+                class="bg-black text-white py-3 rounded-xl text-sm hover:bg-gray-800 transition">
+                Simpan Perubahan
+            </button>
+        </form>
+    </div>
+
+    <script src="https://cdn.quilljs.com/1.3.6/quill.js"></script>
+    <script>
+        var quill = new Quill('#editor', { theme: 'snow' });
+
+        // Isi editor dengan konten artikel yang sudah ada
+        quill.root.innerHTML = `{{ artikel.isi | safe }}`;
+
+        document.getElementById('form-artikel').onsubmit = function() {
+            document.getElementById('isi-hidden').value = quill.root.innerHTML;
+        };
+    </script>
+
+</body>
+</html>
