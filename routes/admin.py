@@ -122,8 +122,12 @@ def hapus_kategori(id):
 def setup():
     from werkzeug.security import generate_password_hash
     user = User.query.filter_by(username='admin').first()
-    if user:
+    if not user:
+        user = User(username='admin', password=generate_password_hash('admin123'))
+        db.session.add(user)
+        db.session.commit()
+        return 'Admin berhasil dibuat!'
+    else:
         user.password = generate_password_hash('admin123')
         db.session.commit()
         return 'Password updated!'
-    return 'User not found!'
