@@ -1,6 +1,7 @@
 from flask import Flask
 from extensions import db, login_manager
 from config import Config
+import cloudinary
 
 def create_app():
     app = Flask(__name__)
@@ -9,6 +10,12 @@ def create_app():
     db.init_app(app)
     login_manager.init_app(app)
     login_manager.login_view = 'admin.login'
+
+    cloudinary.config(
+        cloud_name=app.config['CLOUDINARY_CLOUD_NAME'],
+        api_key=app.config['CLOUDINARY_API_KEY'],
+        api_secret=app.config['CLOUDINARY_API_SECRET']
+    )
 
     from models.artikel import User
 

@@ -10,6 +10,12 @@ endblock %} {% block content %}
     {{ artikel.tanggal.strftime('%d %B %Y') }}
   </p>
   <h1 class="text-4xl font-bold mb-8">{{ artikel.judul }}</h1>
+  {% if artikel.gambar %}
+  <img
+    src="{{ artikel.gambar }}"
+    class="w-full h-64 object-cover rounded-2xl mb-8"
+  />
+  {% endif %}
   <div class="text-gray-600 leading-relaxed prose max-w-none">
     {{ artikel.isi | safe }}
   </div>

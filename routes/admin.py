@@ -1,8 +1,8 @@
 from flask import Blueprint, render_template, redirect, url_for, request, flash
-from flask_login import login_user, logout_user, login_required, current_user
+from flask_login import login_user, logout_user, login_required
 from models.artikel import User, Artikel
-from app import db
 from extensions import db
+import cloudinary.uploader
 
 admin = Blueprint('admin', __name__)
 
@@ -39,7 +39,15 @@ def tambah():
     if request.method == 'POST':
         judul = request.form['judul']
         isi = request.form['isi']
-        artikel = Artikel(judul=judul, isi=isi)
+        gambar_url = None
+
+        if 'gambar' in request.files:
+            file = request.files['gambar']
+            if file.filename != '':
+                upload_result = cloudinary.uploader.upload(file)
+                gambar_url = upload_result['secure_url']
+
+        artikel = Artikel(judul=judul, isi=isi, gambar=gambar_url)
         db.session.add(artikel)
         db.session.commit()
         return redirect(url_for('admin.dashboard'))
@@ -54,6 +62,13 @@ def edit(id):
     if request.method == 'POST':
         artikel.judul = request.form['judul']
         artikel.isi = request.form['isi']
+
+        if 'gambar' in request.files:
+            file = request.files['gambar']
+            if file.filename != '':
+                upload_result = cloudinary.uploader.upload(file)
+                artikel.gambar = upload_result['secure_url']
+
         db.session.commit()
         return redirect(url_for('admin.dashboard'))
 
