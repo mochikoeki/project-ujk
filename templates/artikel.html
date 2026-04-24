@@ -12,9 +12,13 @@ block content %}
       <img src="{{ artikel.gambar }}" class="w-full h-48 object-cover" />
       {% endif %}
       <div class="p-6">
-        <p class="text-xs text-gray-400 mb-2">
-          {{ artikel.tanggal.strftime('%d %B %Y') }}
-        </p>
+        <div class="flex items-center gap-2 mb-3">
+          <span class="text-xs font-bold text-[#7f9660] uppercase tracking-wider">{{ artikel.kategori.nama if artikel.kategori else 'Umum' }}</span>
+          <span class="w-1 h-1 rounded-full bg-gray-300"></span>
+          <p class="text-xs text-gray-400">
+            {{ artikel.tanggal.strftime('%d %B %Y') }}
+          </p>
+        </div>
         <h2 class="text-xl font-bold mb-2 group-hover:text-green-600">
           {{ artikel.judul }}
         </h2>
