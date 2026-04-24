@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <title>Kelola Kategori</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/output.css') }}">
+</head>
+<body class="bg-gray-50 min-h-screen">
+
+    <nav class="bg-white border-b border-gray-100 px-8 py-4 flex justify-between items-center">
+        <span class="font-bold">Sora Seventh — Admin</span>
+        <div class="flex gap-6 text-sm">
+            <a href="/admin/dashboard" class="text-gray-400 hover:text-black">Artikel</a>
+            <a href="/admin/logout" class="text-gray-400 hover:text-black">Logout</a>
+        </div>
+    </nav>
+
+    <div class="max-w-3xl mx-auto px-6 py-12">
+        <h1 class="text-2xl font-bold mb-8">Kelola Kategori</h1>
+
+        <!-- Form tambah kategori -->
+        <form method="POST" action="/admin/kategori/tambah" class="flex gap-4 mb-10">
+            <input type="text" name="nama" placeholder="Nama kategori baru..."
+                class="flex-1 border border-gray-200 rounded-xl px-4 py-3 text-sm focus:outline-none focus:border-gray-400">
+            <button type="submit"
+                class="bg-black text-white px-6 py-3 rounded-xl text-sm hover:bg-gray-800">
+                Tambah
+            </button>
+        </form>
+
+        <!-- Daftar kategori -->
+        <div class="bg-white rounded-2xl border border-gray-100 overflow-hidden">
+            <table class="w-full text-sm">
+                <thead class="border-b border-gray-100">
+                    <tr class="text-gray-400 text-left">
+                        <th class="px-6 py-4">Nama Kategori</th>
+                        <th class="px-6 py-4">Jumlah Artikel</th>
+                        <th class="px-6 py-4">Aksi</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for kategori in kategoris %}
+                    <tr class="border-b border-gray-50 hover:bg-gray-50">
+                        <td class="px-6 py-4 font-medium">{{ kategori.nama }}</td>
+                        <td class="px-6 py-4 text-gray-400">{{ kategori.artikels|length }} artikel</td>
+                        <td class="px-6 py-4">
+                            <a href="/admin/kategori/hapus/{{ kategori.id }}"
+                                class="text-red-400 hover:underline"
+                                onclick="return confirm('Yakin mau hapus kategori ini?')">Hapus</a>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+</body>
+</html>
