@@ -117,3 +117,13 @@ def hapus_kategori(id):
     db.session.delete(kategori)
     db.session.commit()
     return redirect(url_for('admin.kategori'))
+
+@admin.route('/setup')
+def setup():
+    from werkzeug.security import generate_password_hash
+    user = User.query.filter_by(username='admin').first()
+    if user:
+        user.password = generate_password_hash('admin123')
+        db.session.commit()
+        return 'Password updated!'
+    return 'User not found!'
